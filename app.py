@@ -11,6 +11,10 @@ app = Flask(__name__)
 # Load your dataset (df_price)
 df_price = load(open('df_price.sav', 'rb'))
 
+# Load the pre-trained ARIMA model
+with open('arima_fit_final.sav', 'rb') as model_file:
+    arima_fit_final = load(model_file)
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     forecast_df = None  # Initialize forecast_df as None
@@ -21,20 +25,13 @@ def index():
             # Get the number of days input from the user
             periods = int(request.form['periods'])
 
-            # ARIMA model and forecast
-            final_arima_model = sm.tsa.ARIMA(df_price['price'], order=(5, 1, 5))
-            arima_fit_final = final_arima_model.fit()
-
             # Forecast for the specified number of days
-            forecast = arima_fit_final.predict(len(df_price), len(df_price) + periods - 1)
-            #print(forecast)
+            forecast = arima_fit_final.forecast(steps=periods)
 
             # Create DataFrame for forecast data
-            datetime_index = pd.date_range('2021-12-22', periods=periods, freq='D')
+            datetime_index = pd.date_range(df_price.index[-1] + pd.Timedelta(days=1), periods=periods, freq='D')
             forecast_df = pd.DataFrame(forecast.values, index=datetime_index, columns=['price'])
-            #print("Forecast DataFrame:\n", forecast_df.head())
             forecast_df = forecast_df.round(2)
-
 
             # Plot the forecast data
             fig, ax = plt.subplots()
