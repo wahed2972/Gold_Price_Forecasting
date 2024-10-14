@@ -1,0 +1,167 @@
+/* General styling for the body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('images/gold_background.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+
+/* Overlay effect for better text readability */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.75); /* Slight white overlay for better readability */
+    z-index: -1;
+}
+
+/* Centering the container and giving it a nice layout */
+.container {
+    max-width: 700px;
+    background-color: #fffbe6; /* Light cream background */
+    margin: 40px auto;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.container:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for headers */
+h1, h2 {
+    text-align: center;
+    color: #b8860b; /* Dark gold color */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Additional decoration for header 2 */
+h2 {
+    border-bottom: 2px solid #b8860b;
+    padding-bottom: 10px;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    background-color: #fffae6; /* Light cream for form background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+form:hover {
+    transform: scale(1.02);
+}
+
+/* Styling for input fields */
+input {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px;
+    border: 2px solid #d4af37; /* Gold border for input */
+    border-radius: 5px;
+    margin: 10px 0;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #b8860b; /* Dark gold color on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(218, 165, 32, 0.5);
+}
+
+/* Styling for the button with hover effect */
+button {
+    padding: 12px 25px;
+    background-color: #d4af37; /* Golden button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+button:hover {
+    background-color: #b8860b;
+    transform: scale(1.05);
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fef3d8; /* Light golden background for table */
+}
+
+thead {
+    background-color: #d4af37; /* Gold header */
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #fff5cc; /* Lighter row background */
+}
+
+tbody tr:hover {
+    background-color: #ffeb99; /* Light yellow hover effect */
+    transition: background-color 0.3s ease;
+}
+
+tbody tr td:first-child {
+    font-weight: bold;
+}
+
+/* Image styling */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    input, button {
+        width: 100%;
+        max-width: none;
+    }
+}
